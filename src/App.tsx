@@ -1,8 +1,13 @@
-import RoutesApp from "./routes/RoutesApp"
+import GlobalStyle from "./config/GlobalStyle";
+import RoutesApp from "./routes/RoutesApp";
 
 function App() {
-
-  return <RoutesApp />;
+  return (
+    <>
+      <GlobalStyle />
+      <RoutesApp />
+    </>
+  );
 }
 
-export default App
+export default App;
