@@ -4,13 +4,11 @@ const GlobalStyle = createGlobalStyle`
  *, html, body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
   box-sizing: border-box;
-  font-family: 'roboto'
+  font-family: Karla, Roboto, sans-serif;
+  color: rgb(51, 51, 51);
  };
-
- :root {
-  font-size: 10px;
- }
 `;
 
 export default GlobalStyle;

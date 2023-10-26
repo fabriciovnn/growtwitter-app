@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import FlexContainerStyled from "../components/FlexContainerStyled";
 import { login } from "../services/auth.service";
+import MainStyled from "../components/MainStyled";
+import CardStyled from "../components/CardStyled";
 
 function Login() {
   const navigate = useNavigate();
@@ -26,11 +27,11 @@ function Login() {
   }
 
   return (
-    <>
-      <FlexContainerStyled className="login-card">
-        <div className="welcome">
+    <MainStyled>
+      <CardStyled className="login-card">
+        <div id="welcome">
           <h1>Growtwitter</h1>
-          <p>Trabalho final do bloco intermediário</p>
+          <p id="trabalho">Trabalho final do bloco intermediário</p>
           <p>
             O Growtwitter é a plataforma definitiva para todos os apaixonados
             por redes sociais que buscam uma experiência familiar e poderosa,
@@ -40,18 +41,18 @@ function Login() {
           </p>
         </div>
 
-        <div className="login-form">
-          <div className="card">
+        <div id="login-form">
+          <div id="card">
             <h2>Entrar no Growtwitter</h2>
 
             <form onSubmit={handleSubmit}>
               <div className="input-group">
-                <label htmlFor="email"></label>
+                <label htmlFor="email">Email</label>
                 <input type="email" id="email" name="email" />
               </div>
 
               <div className="input-group">
-                <label htmlFor="password"></label>
+                <label htmlFor="password">Password</label>
                 <input type="password" id="password" name="password" />
               </div>
 
@@ -61,8 +62,8 @@ function Login() {
             </form>
           </div>
         </div>
-      </FlexContainerStyled>
-    </>
+      </CardStyled>
+    </MainStyled>
   );
 }
 
