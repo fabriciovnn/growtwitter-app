@@ -9,6 +9,10 @@ const GlobalStyle = createGlobalStyle`
   font-family: Karla, Roboto, sans-serif;
   color: rgb(51, 51, 51);
  };
+
+ a, a:hover, a:focus, a:active {
+      text-decoration: none;
+    }
 `;
 
 export default GlobalStyle;

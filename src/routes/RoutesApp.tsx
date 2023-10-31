@@ -3,6 +3,7 @@ import Explore from "../pages/Explore";
 import Profile from "../pages/Profile";
 import Login from "../pages/Login";
 import Home from "../pages/Home";
+import DefaultLayout from "../config/layout/DefaultLayout";
 
 const router = createBrowserRouter([
   {
@@ -11,15 +12,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home />,
+    element: <DefaultLayout children={<Home />} />,
   },
   {
     path: "/explore",
-    element: <Explore />,
+    element: <DefaultLayout children={<Explore />} />,
   },
   {
     path: "/profile",
-    element: <Profile />,
+    element: <DefaultLayout children={<Profile />} />,
   },
 ]);
 

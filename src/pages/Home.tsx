@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import TitleStyled from "../components/TitleStyled";
 
 function Home() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function Home() {
 
   return (
     <>
-      <h1>Home</h1>
+      <TitleStyled>Home</TitleStyled>
     </>
   );
 }

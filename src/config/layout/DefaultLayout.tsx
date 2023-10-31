@@ -1,12 +1,19 @@
+import DefaultLayoutStyled from "../../components/DefaultLayoutStyled";
+import ContentStyled from "../../components/home/ContentStyled";
+import LeftSideBar from "../../components/home/LeftSideBar";
+import RightSideBar from "../../components/home/RightSideBar";
+
 interface DefaultLayoutProps {
-  children: React.ReactNode;
+  children: React.ReactElement;
 }
 
 function DefaultLayout(props: DefaultLayoutProps) {
   return (
-    <>
-      {/* colocar aqui o que fica estático na página, e envolver nas rotas */}
-    </>
+    <DefaultLayoutStyled>
+      <LeftSideBar />
+      <ContentStyled>{props.children}</ContentStyled>
+      <RightSideBar />
+    </DefaultLayoutStyled>
   );
 }
 

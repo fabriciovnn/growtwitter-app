@@ -1,5 +1,5 @@
-import TitleStyled from "../components/TitleStyled";
-import ContentExplorestyled from "../components/explore/ContentExploreStyled";
+import { Link } from "react-router-dom";
+import AsideStyled from "./AsideStyled";
 
 const happeningList = [
   {
@@ -18,25 +18,13 @@ const happeningList = [
     label: "Cinema - Assunto do Momento",
     title: "Assunto sobre Filmes e Cinema",
   },
-  {
-    label: "Entretenimento - Assunto do Momento",
-    title: "Assunto sobre Entretenimento",
-  },
-  {
-    label: "Assunto do Momento em Porto Alegre",
-    title: "Assunto do Momento em Porto Alegre",
-  },
-  {
-    label: "Daphne - Principal Assunto do Momento",
-    title: "Assunto sobre a Daphne",
-  },
 ];
 
-function Explore() {
+function RightSideBar() {
   return (
-    <div>
-      <TitleStyled>Explorar</TitleStyled>
-      <ContentExplorestyled>
+    <AsideStyled>
+      <div id="right-side-card">
+        <h1>O que está acontecendo?</h1>
         <ul>
           {happeningList.map((item) => (
             <li>
@@ -45,9 +33,12 @@ function Explore() {
             </li>
           ))}
         </ul>
-      </ContentExplorestyled>
-    </div>
+        <div id="wh-more">
+          <Link to="#">Mostrar mais</Link>
+        </div>
+      </div>
+    </AsideStyled>
   );
 }
 
-export default Explore;
+export default RightSideBar;
