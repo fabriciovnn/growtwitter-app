@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import imgDefault from "/assets/default_profile.png";
+import imgDefault from "../../../public/assets/default_profile.png";
 
 interface ImageProfileStyledProps {
   imgUrl: string;

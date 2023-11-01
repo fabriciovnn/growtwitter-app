@@ -1,9 +1,32 @@
-import { user } from "../components/home/LeftSideBar";
+import { useState, useEffect } from "react";
 import HeaderProfileStyled from "../components/profile/HeaderProfileStyled";
 import ImageProfileStyled from "../components/profile/ImageProfileStyled";
 import InformationProfileStyled from "../components/profile/InformationProfileStyled";
+import { UsuarioLogado } from "../components/home/LeftSideBar";
 
 function Profile() {
+  const [usuarioLogado, setUsuarioLogado] = useState<UsuarioLogado | null>(
+    null
+  );
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+
+    if (!user) {
+      return;
+    }
+
+    setUsuarioLogado({
+      name: user.name,
+      username: user.username,
+      imgUrl: user.imgUrl,
+    });
+  }, []);
+
+  if (!usuarioLogado) {
+    return null;
+  }
+
   return (
     <div>
       <HeaderProfileStyled>
@@ -12,18 +35,18 @@ function Profile() {
         </div>
 
         <div>
-          <h1>Perfil de @{user.username}</h1>
+          <h1>Perfil de @{usuarioLogado!.username}</h1>
           <span>X Tweets</span>
         </div>
       </HeaderProfileStyled>
 
-      <ImageProfileStyled imgUrl={user.imgUrl}>
+      <ImageProfileStyled imgUrl={usuarioLogado!.imgUrl}>
         <div id="p-img" />
       </ImageProfileStyled>
 
       <InformationProfileStyled>
-        <h1>{user.name}</h1>
-        <span>@{user.username}</span>
+        <h1>{usuarioLogado!.name}</h1>
+        <span>@{usuarioLogado!.username}</span>
       </InformationProfileStyled>
 
       <div>

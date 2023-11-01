@@ -22,7 +22,8 @@ function Login() {
     }
 
     alert(resposta.mensagem);
-    localStorage.setItem("token", JSON.stringify(resposta.dados.token));
+    localStorage.setItem("token", resposta.dados.token);
+    localStorage.setItem("user", JSON.stringify(resposta.dados.user));
     navigate("/home");
   }
 

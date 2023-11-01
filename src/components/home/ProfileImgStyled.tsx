@@ -2,7 +2,7 @@ import styled from "styled-components";
 import imgDefault from "../../../public/assets/default_profile.png";
 
 interface ProfileImgStyledProps {
-  imgUrl: string;
+  imgUrl: string | null;
 }
 
 const ProfileImgStyled = styled.div<ProfileImgStyledProps>`

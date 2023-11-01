@@ -7,7 +7,7 @@ import imgHome from "/assets/light_color/icone_pagina inicial.svg";
 import imgHomeActive from "/assets/light_color/icone_pagina inicial_selecionado.svg";
 import imgProfile from "/assets/light_color/icone_perfil.svg";
 import imgProfileActive from "/assets/light_color/icone_perfil_selecionado.svg";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const menuItens = [
   {
@@ -30,28 +30,41 @@ const menuItens = [
   },
 ];
 
-export const user = {
-  id: "85fe118e-6970-4dca-8061-dca33e4b7d6d",
-  name: "Xablau da Silva",
-  username: "xablau",
-  password: "6660",
-  createdAt: "2023-10-25T00:35:37.730Z",
-  updatedAt: "2023-10-25T00:35:37.730Z",
-  imgUrl:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrvvuxQ0vx08DbMKCUs3tSeR72IIaUp7E7bysBcL9c8vc91EtK7_zKPM0AsDJhROIVuNs&usqp=CAU",
-};
+export interface UsuarioLogado {
+  name: string;
+  username: string;
+  imgUrl: string;
+}
 
 function LeftSideBar() {
-  const token = JSON.parse(localStorage.getItem("token") ?? "");
+  const [usuarioLogado, setUsuarioLogado] = useState<UsuarioLogado | null>(
+    null
+  );
   // const user = JSON.parse(localStorage.getItem("user") ?? "")
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token) {
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+    const token = localStorage.getItem("token") ?? "";
+    if (!token || !user) {
       navigate("/");
       return;
     }
+
+    setUsuarioLogado({
+      imgUrl: user.imgUrl,
+      name: user.name,
+      username: user.username,
+    });
   }, []);
+
+  function logout() {
+    localStorage.clear();
+  }
+
+  if (!usuarioLogado) {
+    return null;
+  }
 
   return (
     <LeftSideBarStyled>
@@ -84,14 +97,16 @@ function LeftSideBar() {
         </button>
       </div>
       <div id="ls-profile">
-        <ProfileImgStyled imgUrl={user.imgUrl} />
+        <ProfileImgStyled imgUrl={usuarioLogado.imgUrl} />
         <div id="ls-profile-name">
-          <h1>{user.name}</h1>
-          <p>@{user.username}</p>
+          <h1>{usuarioLogado.name}</h1>
+          <p>@{usuarioLogado.username}</p>
         </div>
       </div>
       <div id="ls-profile-actions">
-        <Link to="/">Sair</Link>
+        <Link onClick={logout} to="/">
+          Sair
+        </Link>
       </div>
     </LeftSideBarStyled>
   );
