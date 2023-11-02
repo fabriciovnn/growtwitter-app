@@ -3,33 +3,7 @@ import { useEffect, useState } from "react";
 import TitleStyled from "../components/TitleStyled";
 import MainHomeStyled from "../components/home/MainHomeStyled";
 import Tweet from "../components/home/Tweet";
-import apiService from "../services/api.service";
 import { listarTweets } from "../services/tweet.service";
-
-const mockTweets = [
-  {
-    id: "id123",
-    content: "conteudo1",
-    totalLikes: 1,
-    like: true,
-    user: {
-      name: "joao",
-      username: "@joao2",
-      imgUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrvvuxQ0vx08DbMKCUs3tSeR72IIaUp7E7bysBcL9c8vc91EtK7_zKPM0AsDJhROIVuNs&usqp=CAU",
-    },
-  },
-  {
-    id: "id1234",
-    content: "conteudo2",
-    totalLikes: 2,
-    like: false,
-    user: {
-      name: "joao da silva",
-      username: "@joao3",
-    },
-  },
-];
 
 function Home() {
   const [listaTweets, setListaTweets] = useState([]);
