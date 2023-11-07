@@ -8,6 +8,7 @@ import imgHomeActive from "/assets/light_color/icone_pagina inicial_selecionado.
 import imgProfile from "/assets/light_color/icone_perfil.svg";
 import imgProfileActive from "/assets/light_color/icone_perfil_selecionado.svg";
 import { useEffect, useState } from "react";
+import Modal from "./Modal";
 
 const menuItens = [
   {
@@ -37,6 +38,7 @@ export interface UsuarioLogado {
 }
 
 function LeftSideBar() {
+  const [open, setOpen] = useState<boolean>(false);
   const [usuarioLogado, setUsuarioLogado] = useState<UsuarioLogado | null>(
     null
   );
@@ -92,7 +94,7 @@ function LeftSideBar() {
             </li>
           ))}
         </ul>
-        <button id="btn-tweetar" onClick={() => alert("teste")}>
+        <button id="btn-tweetar" onClick={() => setOpen(true)}>
           Tweetar
         </button>
       </div>
@@ -108,6 +110,7 @@ function LeftSideBar() {
           Sair
         </Link>
       </div>
+      {open && <Modal handleClose={() => setOpen(false)} />}
     </LeftSideBarStyled>
   );
 }
